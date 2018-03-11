@@ -8,7 +8,7 @@ RSpec.describe VendingMachine do
     let(:change_machine) { double("ChangeMachine") }
 
     before :each do
-      allow(ShelfSet).to receive(:new).and_return(shelf_set)
+      allow(ShelfSet).to receive(:new).with([]).and_return(shelf_set)
       allow(ChangeMachine).to receive(:new).and_return(change_machine)
     end
 
