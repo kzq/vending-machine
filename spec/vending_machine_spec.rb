@@ -4,8 +4,8 @@ RSpec.describe VendingMachine do
   subject(:machine) { described_class.new }
 
   describe "initialize" do
-    let(:shelf_set) { double("shelf_set") }
-    let(:change_machine) { double("change_machine") }
+    let(:shelf_set) { double("ShelfSet") }
+    let(:change_machine) { double("ChangeMachine") }
 
     before :each do
       allow(ShelfSet).to receive(:new).and_return(shelf_set)
