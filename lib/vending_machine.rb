@@ -5,3 +5,8 @@ class VendingMachine
     @shelf_set, @change_machine = shelf_set, change_machine
   end
 end
+
+require 'shelf_set'
+require 'change_machine'
+require 'installer'
+require 'shelf_filler'

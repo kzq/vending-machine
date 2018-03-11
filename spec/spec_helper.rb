@@ -1,6 +1,4 @@
-require './vending_machine'
-require './shelf_set'
-require './change_machine'
+require './lib/vending_machine'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
