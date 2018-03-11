@@ -8,9 +8,10 @@ class ShelfFiller
     shelves
    end
 
-   private
-   def prepare_shelf(shelf:, shelf_code:, item:)
-     shelf.code = shelf_code
-     shelf.fill(item)
-   end
+  private
+
+  def prepare_shelf(shelf:, shelf_code:, item:)
+    shelf.code = shelf_code
+    shelf.fill(item)
+  end
 end

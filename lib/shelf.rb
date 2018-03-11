@@ -2,29 +2,30 @@ class Shelf
   attr_accessor :code, :quantity, :item
 
   def initialize
-    @quantity= 0
+    @quantity = 0
   end
 
   def fill(product)
-   product = defaults.merge(product)
-   @quantity = product[:quantity]
-   item_tuple = extract_item(product)
-   @item = Item.new(item_tuple[0], item_tuple[1])
+    product = defaults.merge(product)
+    @quantity = product[:quantity]
+    item_tuple = extract_item(product)
+    @item = Item.new(item_tuple[0], item_tuple[1])
   end
 
   def add_item
-   @quantity+=1
+    @quantity += 1
   end
 
   def remove_item
-   @quantity-=1 unless @quantity <= 0
+    @quantity -= 1 unless @quantity <= 0
   end
 
   def defaults
-    { quantity: 20}
+    { quantity: 20 }
   end
 
   private
+
   def extract_item(product)
     product.delete(:quantity)
     product.to_a.flatten

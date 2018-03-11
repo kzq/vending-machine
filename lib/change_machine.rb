@@ -1,3 +1,2 @@
 class ChangeMachine
-
 end
