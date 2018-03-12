@@ -10,6 +10,7 @@ class Shelf
     @quantity = product[:quantity]
     item_tuple = extract_item(product)
     @item = Item.new(item_tuple[0], item_tuple[1])
+    self
   end
 
   def add_item
