@@ -28,7 +28,7 @@ class Installer
 
   def fill_cash_box(currency)
     currency = constantize(currency)
-    @machine.change_machine.load_cash(currency)
+    @machine.change_machine.load_cash(currency: currency)
   end
 
   def constantize(currency)
