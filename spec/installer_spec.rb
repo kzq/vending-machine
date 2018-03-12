@@ -30,7 +30,7 @@ RSpec.describe Installer do
     it 'returns new machine' do
       allow(shelf_filler).to receive(:fill_all).with(products).and_return('shelves')
       allow(machine).to receive_message_chain('shelf_set.add').with(shelf: 'shelves')
-      allow(machine).to receive_message_chain('change_machine.load_cash').with('GBP')
+      allow(machine).to receive_message_chain('change_machine.load_cash')
       installer.setup(products: products)
       expect(installer.machine).to eq(machine)
     end
