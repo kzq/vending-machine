@@ -1,3 +1,11 @@
+# TODO Encapsulate shelf behaviour into Shelfing module
+# TODO Create Currency interface for all currency types
+# TODO Fix transaction logic
+# TODO Create mixin module for helper methods
+# OPTIMIZE imporive exception managemnt
+# OPTIMIZE improve interactor
+
+
 require './lib/vending_machine'
 
 
