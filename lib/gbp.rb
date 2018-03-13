@@ -30,5 +30,5 @@ def remove_characters(str)
 end
 
 def remove_numbers(str)
-  str.gsub(/(\W|\d)/, "")
+  str.gsub(/(\d)/, "")
 end
