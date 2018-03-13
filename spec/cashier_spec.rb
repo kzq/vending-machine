@@ -15,21 +15,10 @@ RSpec.describe Cashier do
     allow(hopper).to receive(:quantity).and_return(5)
   end
 
-  describe "#insert_money" do
+  describe "#credit" do
     it "inserts money into correct coin slot" do
       allow(currency).to receive(:valid?).and_return(true)
-      expect(cashier.insert_money("5p")).to eq(hopper)
-    end
-
-    it "shouts when invalid money is given" do
-      allow(currency).to receive(:valid?).and_return(false)
-      expect { cashier.insert_money("115p") }.to raise_error(InvalidMoney, "Invalid money")
-    end
-  end
-
-  describe "#find" do
-    it "searches hoppers to get correct one" do
-      expect(cashier.find("1p")).to eq(hopper)
+      expect(cashier.credit(money: ["5p"])).to eq({:accepted=>["5p"], :rejected=>[]})
     end
   end
 end

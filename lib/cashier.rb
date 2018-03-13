@@ -1,17 +1,26 @@
 class Cashier
-
   def initialize(change_machine:)
     @change_machine = change_machine
   end
 
-  def insert_money(coin)
-   if currency.valid?(coin)
-    hopper = find(coin)
-    add_money_to_hopper(hopper)
-   else
-     raise InvalidMoney, "Invalid money"
-   end
+  def credit(money: [])
+    rejected_coins = []
+    money.each do |coin|
+      if currency.valid?(coin)
+        hopper = find(coin)
+        add_money_to_hopper(hopper)
+      else
+        rejected_coins << coin
+      end
+    end
+    filter_acceptable_coins(money,rejected_coins)
   end
+
+  def debit(amount:)
+
+  end
+
+  private
 
   def currency
     @change_machine.currency
@@ -25,31 +34,13 @@ class Cashier
     @change_machine.hoppers
   end
 
-  def transaction(payment:, charge:)
-   amount = (payment - charge).round(2)
-   status = case amount
-   when amount.positive? then  [ :chnage_due, @currency.to_coin(amount) ]
-     when amount.negative? then [ :remaining, @currency.to_coin(amount*-1) ]
-     else [ :complete, 0 ]
-   end
-  end
-
-  def total_cash
-
-  end
-
-  def return_change
-
-  end
-
-  def rejected_coins
-
-  end
-
-  private
-
   def add_money_to_hopper(hopper)
     hopper.quantity+=1
     hopper
+  end
+
+  def filter_acceptable_coins(money, rejected_coins)
+    money_partition = money.partition { |coin| rejected_coins.include?(coin) }
+    {accepted: money_partition[1], rejected: money_partition[0] }
   end
 end
