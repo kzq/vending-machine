@@ -11,9 +11,10 @@ class VendingMachine
   end
 end
 
-require 'shelf_set'
-require 'change_machine'
-require 'installer'
-require 'shelf_filler'
-require 'shelf'
-require 'gbp'
+require_relative 'shelf_set'
+require_relative 'change_machine'
+require_relative 'installer'
+require_relative 'shelf_filler'
+require_relative 'shelf'
+require_relative 'gbp'
+require_relative 'cashier'
