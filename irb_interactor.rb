@@ -30,14 +30,19 @@ shelf_set = machine.shelf_set
 # change_machine
 change_machine = machine.change_machine
 
-puts "Current Stock in hand ......................\n\n"
+puts "==================== STOCK STATUS ========================= \n\n"
 puts "#{ shelf_set.shelves.collect { |shelf| { name: shelf.item.name, quantity: shelf.quantity } } }"
+puts "\n\n"
+
+puts "==================== CASH IN HAND ========================= \n\n"
+puts "#{ change_machine.hoppers.collect { |hopper| { coin: hopper.code, quantity: hopper.quantity } } }"
 puts "\n\n"
 
 # product selection codes
 shelf_codes = machine.shelf_set.shelves.map(&:code)
 
-puts "SELECTION (please select one code) = #{shelf_codes}\n\n"
+puts "SELECTION = #{shelf_codes}\n"
+puts "Please select one code\n\n"
 selection = gets.chomp
 puts "\n\n"
 
@@ -48,6 +53,8 @@ product_price = shelf.item.price
 puts "Selected product price is = #{product_price}\n\n"
 
 puts "Please insert or pay = #{product_price}\n\n"
+
+puts "Acceptable coins are = #{GBP.money.to_a}\n\n"
 
 price = GBP.to_value(product_price)
 
@@ -72,16 +79,19 @@ puts "Total amount paid = #{transaction.amount_paid}"
 puts "Total balance = #{transaction.balance}"
 puts "Total status = #{transaction.status}\n\n"
 
-puts "Current Stock in hand......................\n\n"
-puts "#{ shelf_set.shelves.collect { |shelf| { name: shelf.item.name, quantity: shelf.quantity } } }"
-puts "\n\n"
-
-puts "Adding money to cash box..."
-
 coins = transaction.payments.collect {|coin_value| GBP.to_coin(coin_value) }
 
 cashier = Cashier.new(change_machine: change_machine)
 credited = cashier.credit(money: coins)
 
 puts "Amount credited = #{credited}\n\n"
+
+puts "==================== STOCK STATUS ========================= \n\n"
+puts "#{ shelf_set.shelves.collect { |shelf| { name: shelf.item.name, quantity: shelf.quantity } } }"
+puts "\n\n"
+
+puts "==================== CASH IN HAND ========================= \n\n"
+puts "#{ change_machine.hoppers.collect { |hopper| { coin: hopper.code, quantity: hopper.quantity } } }"
+puts "\n\n"
+
 
