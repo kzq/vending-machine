@@ -1,6 +1,13 @@
 # Ruby Vending Machine!
 
-`cd vending-machine`
+## Setup
 
-`irb> load './irb_interactor.rb'`
+``` sh
+$ git clone https://github.com/kzq/vending-machine.git
+$ cd vending-machine
+$ irb
+irb> load './irb_interactor.rb'
+```
+
    
+![Vending Machine](https://github.com/kzq/vending-machine/blob/master/tty.gif)
