@@ -7,10 +7,11 @@ class Shelf
 
   def fill(product)
     product = defaults.merge(product)
-    @quantity = product[:quantity]
-    item_tuple = extract_item(product)
-    @item = Item.new(item_tuple[0], item_tuple[1])
-    self
+    self.tap do |shelf|
+      shelf.quantity = product[:quantity]
+      item_tuple = extract_item(product)
+      shelf.item = Item.new(item_tuple[0], item_tuple[1])
+    end
   end
 
   def add_item
